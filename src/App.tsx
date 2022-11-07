@@ -4,10 +4,11 @@ import './App.css'
 export function App() {
   return (
     <div>
-      <div className="picker-styling">
-        Color Picker
+      <div className="picker-container">
+        <h1>Color Picker</h1>
         <div>
           <input type="range" id="hue" name="hue" min="0" max="360" />
+          <label htmlFor="hue">Hue</label>
         </div>
         <div>
           <input
@@ -17,6 +18,7 @@ export function App() {
             min="0"
             max="100"
           />
+          <label htmlFor="saturation">Saturation</label>
         </div>
         <div>
           <input
@@ -26,6 +28,7 @@ export function App() {
             min="0"
             max="100"
           />
+          <label htmlFor="lightness">Lightness</label>
         </div>
       </div>
     </div>

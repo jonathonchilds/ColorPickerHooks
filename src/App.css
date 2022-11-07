@@ -1,4 +1,4 @@
-.picker-styling {
+.picker-container {
   display: flex;
   flex-direction: column;
 
@@ -6,4 +6,11 @@
   padding: 1rem;
   margin: 5rem;
   box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: var(font-size);
+  margin: 0;
 }
