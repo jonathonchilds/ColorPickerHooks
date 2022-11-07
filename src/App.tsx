@@ -30,6 +30,7 @@ export function App() {
           />
           <label htmlFor="lightness">Lightness</label>
         </div>
+        <button>Random Color</button>
       </div>
     </div>
   )
