@@ -17,11 +17,10 @@ html {
 }
 
 body {
-  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
   min-height: 100%;
   background-color: #93bbbb82;
-}
-
-#styling {
-  border: 3px, solid, #2f3737;
 }
