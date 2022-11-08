@@ -8,6 +8,19 @@ export function App() {
   //wanted to use same state for each input//
   const [lightnessValue, setLightnessValue] = useState<string>()
 
+  function colorGenerator(hue: string, saturation: string, lightness: string) {
+    const hueTransformed = +hue
+    const saturationTransformed = +saturation
+    const lightnessTransformed = +lightness
+
+    const HSLValue =
+      hueTransformed + saturationTransformed + lightnessTransformed
+
+    console.log(HSLValue)
+  }
+
+  function sliderValues(value: string) {}
+
   return (
     <div>
       <div className="picker-container">
@@ -25,8 +38,8 @@ export function App() {
             step="1"
           />
           <label className="slider-labels" htmlFor="hue">
-            Hue
-            <div>{hueValue}</div>
+            <h2>Hue</h2>
+            <h3>{hueValue}</h3>
           </label>
         </div>
         <div className="slider-container">
@@ -41,8 +54,8 @@ export function App() {
             step="1"
           />
           <label className="slider-labels" htmlFor="saturation">
-            Saturation
-            <div>{saturationValue}%</div>
+            <h2> Saturation</h2>
+            <h3>{saturationValue}%</h3>
           </label>
         </div>
         <div className="slider-container">
@@ -57,8 +70,9 @@ export function App() {
             step="1"
           />
           <label className="slider-labels" htmlFor="lightness">
-            Lightness
-            <div>{lightnessValue}%</div>
+            {' '}
+            <h2>Lightness</h2>
+            <h3>{lightnessValue}%</h3>
           </label>
         </div>
         <button>Random Color</button>
