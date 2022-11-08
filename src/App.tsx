@@ -3,7 +3,10 @@ import './App.css'
 
 export function App() {
   const [hueValue, setHueValue] = useState<string>()
+  //"event.target.value" wouldn't allow a number
+  const [saturationValue, setSaturationValue] = useState<string>()
   //wanted to use same state for each input//
+  const [lightnessValue, setLightnessValue] = useState<string>()
 
   return (
     <div>
@@ -28,6 +31,8 @@ export function App() {
         </div>
         <div className="slider-container">
           <input
+            value={saturationValue}
+            onChange={(event) => setSaturationValue(event.target.value)}
             type="range"
             id="saturation"
             name="saturation"
@@ -37,11 +42,13 @@ export function App() {
           />
           <label className="slider-labels" htmlFor="saturation">
             Saturation
-            <div></div>
+            <div>{saturationValue}%</div>
           </label>
         </div>
         <div className="slider-container">
           <input
+            value={lightnessValue}
+            onChange={(event) => setLightnessValue(event.target.value)}
             type="range"
             id="lightness"
             name="lightness"
@@ -51,7 +58,7 @@ export function App() {
           />
           <label className="slider-labels" htmlFor="lightness">
             Lightness
-            <div></div>
+            <div>{lightnessValue}%</div>
           </label>
         </div>
         <button>Random Color</button>
