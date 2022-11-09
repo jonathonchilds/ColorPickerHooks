@@ -1,7 +1,7 @@
 .font {
   --font: 16px / 1 sans-serif;
 }
-.picker-container {
+.picker {
   display: flex;
   flex-direction: column;
   border: 5px solid rgb(57, 54, 54);
@@ -11,7 +11,7 @@
   background-color: azure !important;
 }
 
-.slider-container {
+.slider {
   display: flex;
   flex-direction: column;
   text-align: center;

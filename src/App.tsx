@@ -3,25 +3,33 @@ import './App.css'
 
 export function App() {
   const [hue, setHue] = useState<string>()
-
   const [saturation, setSaturation] = useState<string>()
-  //wanted to use same state for each input//
   const [lightness, setLightness] = useState<string>()
 
   function colorGenerator() {
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`
   }
 
+  function randomColorGenerator() {
+    setHue(Math.floor(Math.random() * 360).toString())
+    setSaturation(Math.floor(Math.random() * 100).toString())
+    setLightness(Math.floor(Math.random() * 100).toString())
+  }
+
   useEffect(() => {
     document.body.style.backgroundColor = colorGenerator()
   }, [hue, saturation, lightness])
 
+  useEffect(() => {
+    randomColorGenerator()
+  }, [])
+
   return (
     <div>
-      <div className="picker-container">
+      <div className="picker">
         <h1>Color Picker</h1>
         <h2>{colorGenerator()}</h2>
-        <div className="slider-container">
+        <div className="slider">
           <input
             value={hue}
             onChange={(event) => setHue(event.target.value)}
@@ -38,7 +46,7 @@ export function App() {
             <h3>{hue}</h3>
           </label>
         </div>
-        <div className="slider-container">
+        <div className="slider">
           <input
             value={saturation}
             onChange={(event) => setSaturation(event.target.value)}
@@ -54,7 +62,7 @@ export function App() {
             <h3>{saturation}%</h3>
           </label>
         </div>
-        <div className="slider-container">
+        <div className="slider">
           <input
             value={lightness}
             onChange={(event) => setLightness(event.target.value)}
@@ -72,7 +80,7 @@ export function App() {
           </label>
         </div>
 
-        <button>Random Color</button>
+        <button onClick={randomColorGenerator}>Random Color</button>
       </div>
     </div>
   )
