@@ -1,34 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 
 export function App() {
-  const [hueValue, setHueValue] = useState<string>()
-  //"event.target.value" wouldn't allow a number
-  const [saturationValue, setSaturationValue] = useState<string>()
+  const [hue, setHue] = useState<string>()
+
+  const [saturation, setSaturation] = useState<string>()
   //wanted to use same state for each input//
-  const [lightnessValue, setLightnessValue] = useState<string>()
+  const [lightness, setLightness] = useState<string>()
 
-  function colorGenerator(hue: string, saturation: string, lightness: string) {
-    const hueTransformed = +hue
-    const saturationTransformed = +saturation
-    const lightnessTransformed = +lightness
-
-    const HSLValue =
-      hueTransformed + saturationTransformed + lightnessTransformed
-
-    console.log(HSLValue)
+  function colorGenerator() {
+    return `hsl(${hue}, ${saturation}%, ${lightness}%)`
   }
 
-  function sliderValues(value: string) {}
+  useEffect(() => {
+    document.body.style.backgroundColor = colorGenerator()
+  }, [hue, saturation, lightness])
 
   return (
     <div>
       <div className="picker-container">
         <h1>Color Picker</h1>
+        <h2>{colorGenerator()}</h2>
         <div className="slider-container">
           <input
-            value={hueValue}
-            onChange={(event) => setHueValue(event.target.value)}
+            value={hue}
+            onChange={(event) => setHue(event.target.value)}
             //experimented with "this"//
             type="range"
             id="hue"
@@ -39,13 +35,13 @@ export function App() {
           />
           <label className="slider-labels" htmlFor="hue">
             <h2>Hue</h2>
-            <h3>{hueValue}</h3>
+            <h3>{hue}</h3>
           </label>
         </div>
         <div className="slider-container">
           <input
-            value={saturationValue}
-            onChange={(event) => setSaturationValue(event.target.value)}
+            value={saturation}
+            onChange={(event) => setSaturation(event.target.value)}
             type="range"
             id="saturation"
             name="saturation"
@@ -55,13 +51,13 @@ export function App() {
           />
           <label className="slider-labels" htmlFor="saturation">
             <h2> Saturation</h2>
-            <h3>{saturationValue}%</h3>
+            <h3>{saturation}%</h3>
           </label>
         </div>
         <div className="slider-container">
           <input
-            value={lightnessValue}
-            onChange={(event) => setLightnessValue(event.target.value)}
+            value={lightness}
+            onChange={(event) => setLightness(event.target.value)}
             type="range"
             id="lightness"
             name="lightness"
@@ -72,9 +68,10 @@ export function App() {
           <label className="slider-labels" htmlFor="lightness">
             {' '}
             <h2>Lightness</h2>
-            <h3>{lightnessValue}%</h3>
+            <h3>{lightness}%</h3>
           </label>
         </div>
+
         <button>Random Color</button>
       </div>
     </div>
